@@ -29,12 +29,12 @@ CREATE TABLE `chat` (
   `isreply` int(11) DEFAULT NULL COMMENT '是否回复',
   `userid` bigint(20) NOT NULL COMMENT '用户id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='客服聊天';
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='客服聊天';
 
 /*Data for the table `chat` */
 
 insert  into `chat`(`id`,`addtime`,`adminid`,`ask`,`reply`,`isreply`,`userid`) values 
-(1,'2025-05-08 20:32:33',1,'提问内容1','回复内容1',1,1),
+(1,'2025-05-08 20:32:33',1,'提问内容1','回复内容1',0,1),
 (2,'2025-05-08 20:32:33',2,'提问内容2','回复内容2',2,2),
 (3,'2025-05-08 20:32:33',3,'提问内容3','回复内容3',3,3),
 (4,'2025-05-08 20:32:33',4,'提问内容4','回复内容4',4,4),
@@ -43,7 +43,16 @@ insert  into `chat`(`id`,`addtime`,`adminid`,`ask`,`reply`,`isreply`,`userid`) v
 (7,'2025-05-08 20:32:33',7,'提问内容7','回复内容7',7,7),
 (8,'2025-05-08 20:32:33',8,'提问内容8','回复内容8',8,8),
 (9,'2025-05-08 20:32:33',9,'提问内容9','回复内容9',9,9),
-(10,'2025-05-08 20:32:33',10,'提问内容10','回复内容10',10,10);
+(10,'2025-05-08 20:32:33',10,'提问内容10','回复内容10',10,10),
+(11,'2025-05-17 14:30:06',1,NULL,'6',0,1),
+(12,'2025-05-19 14:14:11',NULL,'你好',NULL,0,71),
+(13,'2025-05-19 14:14:15',NULL,'hi\n',NULL,0,71),
+(14,'2025-05-20 12:40:00',NULL,'112155',NULL,0,71),
+(15,'2025-05-20 12:40:00',NULL,'',NULL,0,71),
+(16,'2025-05-20 12:45:36',1,NULL,'444',0,71),
+(17,'2025-05-20 16:06:44',NULL,'1',NULL,0,71),
+(18,'2025-06-08 00:28:00',NULL,'2025',NULL,0,71),
+(19,'2025-06-08 00:46:35',1,NULL,'hello',0,71);
 
 /*Table structure for table `chat_friend` */
 
@@ -61,7 +70,7 @@ CREATE TABLE `chat_friend` (
   `alias` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '别名',
   `type` int(11) DEFAULT '0' COMMENT '类型(0:好友申请，1:好友，2:消息)',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='好友表';
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='好友表';
 
 /*Data for the table `chat_friend` */
 
@@ -75,7 +84,13 @@ insert  into `chat_friend`(`id`,`addtime`,`uid`,`fid`,`name`,`picture`,`role`,`t
 (7,'2025-05-08 20:32:33',7,7,'名称7','file/chat_friendPicture7.jpg,file/chat_friendPicture8.jpg,file/chat_friendPicture9.jpg','角色7','表名7','别名7',7),
 (8,'2025-05-08 20:32:33',8,8,'名称8','file/chat_friendPicture8.jpg,file/chat_friendPicture9.jpg,file/chat_friendPicture10.jpg','角色8','表名8','别名8',8),
 (9,'2025-05-08 20:32:33',9,9,'名称9','file/chat_friendPicture9.jpg,file/chat_friendPicture10.jpg,file/chat_friendPicture11.jpg','角色9','表名9','别名9',9),
-(10,'2025-05-08 20:32:33',10,10,'名称10','file/chat_friendPicture10.jpg,file/chat_friendPicture11.jpg,file/chat_friendPicture12.jpg','角色10','表名10','别名10',10);
+(10,'2025-05-08 20:32:33',10,10,'名称10','file/chat_friendPicture10.jpg,file/chat_friendPicture11.jpg,file/chat_friendPicture12.jpg','角色10','表名10','别名10',10),
+(11,'2025-05-17 14:31:57',71,198,'专家账号8','file/jiankangzhuanjiaTouxiang8.jpg',NULL,'jiankangzhuanjia',NULL,2),
+(12,'2025-05-17 14:31:57',198,71,'用户账号1','file/yonghuTouxiang1.jpg',NULL,'yonghu',NULL,2),
+(13,'2025-05-17 14:32:10',71,191,'专家账号1','file/jiankangzhuanjiaTouxiang1.jpg',NULL,'jiankangzhuanjia',NULL,2),
+(14,'2025-05-17 14:32:10',191,71,'用户账号1','file/yonghuTouxiang1.jpg',NULL,'yonghu',NULL,2),
+(15,'2025-06-08 00:47:59',1,191,'专家账号1','file/jiankangzhuanjiaTouxiang1.jpg',NULL,'jiankangzhuanjia',NULL,2),
+(16,'2025-06-08 00:47:59',191,1,'admin',NULL,NULL,'users',NULL,2);
 
 /*Table structure for table `chat_message` */
 
@@ -90,7 +105,7 @@ CREATE TABLE `chat_message` (
   `format` int(11) DEFAULT NULL COMMENT '格式(1:文字，2:图片)',
   `is_read` int(11) DEFAULT '0' COMMENT '消息已读(0:未读，1:已读)',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='消息表';
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='消息表';
 
 /*Data for the table `chat_message` */
 
@@ -104,7 +119,17 @@ insert  into `chat_message`(`id`,`addtime`,`uid`,`fid`,`content`,`format`,`is_re
 (7,'2025-05-08 20:32:33',7,7,'内容7',7,7),
 (8,'2025-05-08 20:32:33',8,8,'内容8',8,8),
 (9,'2025-05-08 20:32:33',9,9,'内容9',9,9),
-(10,'2025-05-08 20:32:33',10,10,'内容10',10,10);
+(10,'2025-05-08 20:32:33',10,10,'内容10',10,10),
+(11,'2025-05-17 14:31:57',71,198,'file/1747463516995.jpg',2,0),
+(12,'2025-05-17 14:32:10',71,191,'file/1747463529989.jpg',2,1),
+(13,'2025-05-20 12:39:24',71,191,'1111',1,1),
+(14,'2025-05-20 12:39:28',71,191,'file/1747715968018.jpg',2,1),
+(15,'2025-05-20 12:46:36',191,71,'55',1,1),
+(16,'2025-05-20 16:06:33',71,191,'1',1,1),
+(17,'2025-06-08 00:27:18',71,191,'感冒了',1,1),
+(18,'2025-06-08 00:47:59',1,191,'0：47',1,1),
+(19,'2025-06-08 00:56:16',191,71,'吃药',1,0),
+(20,'2025-06-08 00:56:31',191,1,'收到',1,0);
 
 /*Table structure for table `config` */
 
@@ -140,9 +165,16 @@ CREATE TABLE `discussjiankangshipu` (
   `content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '评论内容',
   `reply` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT '回复内容',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='健康食谱评论表';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='健康食谱评论表';
 
 /*Data for the table `discussjiankangshipu` */
+
+insert  into `discussjiankangshipu`(`id`,`addtime`,`refid`,`userid`,`avatarurl`,`nickname`,`content`,`reply`) values 
+(1,'2025-05-18 23:31:53',2,71,'file/yonghuTouxiang1.jpg','用户账号1','<p>可以</p>',NULL),
+(2,'2025-05-28 19:34:08',1,71,'file/yonghuTouxiang1.jpg','用户账号1','<p>666</p>',NULL),
+(3,'2025-05-28 19:34:40',1,72,'file/yonghuTouxiang2.jpg','用户账号2','<p>5</p>',NULL),
+(4,'2025-05-28 21:13:48',1,71,'file/yonghuTouxiang1.jpg','用户账号1','<p>这个食谱的碳水含量适合糖尿病患者吗？</p>',NULL),
+(5,'2025-06-08 00:23:56',2,71,'file/yonghuTouxiang1.jpg','用户账号1','<p>123</p>',NULL);
 
 /*Table structure for table `discussjiankangzhishi` */
 
@@ -158,9 +190,12 @@ CREATE TABLE `discussjiankangzhishi` (
   `content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '评论内容',
   `reply` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT '回复内容',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='健康知识评论表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='健康知识评论表';
 
 /*Data for the table `discussjiankangzhishi` */
+
+insert  into `discussjiankangzhishi`(`id`,`addtime`,`refid`,`userid`,`avatarurl`,`nickname`,`content`,`reply`) values 
+(1,'2025-06-08 00:24:51',10,71,'file/yonghuTouxiang1.jpg','用户账号1','<p>123</p>',NULL);
 
 /*Table structure for table `jiankangdangan` */
 
@@ -182,7 +217,7 @@ CREATE TABLE `jiankangdangan` (
   `jiazubingshi` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT '家族病史',
   `guominyaowu` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '过敏药物',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='健康档案';
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='健康档案';
 
 /*Data for the table `jiankangdangan` */
 
@@ -225,8 +260,7 @@ insert  into `jiankangmubiao`(`id`,`addtime`,`mubiaotizhong`,`mubiaoxinlv`,`mubi
 (6,'2025-05-08 20:32:33','目标体重6','目标心率6','目标血压6','计划6','用户账号6','用户姓名6'),
 (7,'2025-05-08 20:32:33','目标体重7','目标心率7','目标血压7','计划7','用户账号7','用户姓名7'),
 (8,'2025-05-08 20:32:33','目标体重8','目标心率8','目标血压8','计划8','用户账号8','用户姓名8'),
-(9,'2025-05-08 20:32:33','目标体重9','目标心率9','目标血压9','计划9','用户账号9','用户姓名9'),
-(10,'2025-05-08 20:32:33','目标体重10','目标心率10','目标血压10','计划10','用户账号10','用户姓名10');
+(9,'2025-05-08 20:32:33','目标体重9','目标心率9','目标血压9','计划9','用户账号9','用户姓名9');
 
 /*Table structure for table `jiankangshipu` */
 
@@ -249,13 +283,13 @@ CREATE TABLE `jiankangshipu` (
   `discuss_number` int(11) DEFAULT NULL COMMENT '评论数',
   `clicktime` datetime DEFAULT NULL COMMENT '最近点击时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='健康食谱';
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='健康食谱';
 
 /*Data for the table `jiankangshipu` */
 
 insert  into `jiankangshipu`(`id`,`addtime`,`shipumingcheng`,`fengmian`,`suoxushicai`,`shipugongxiao`,`shiherenqun`,`zhizuofangfa`,`fabushijian`,`xiangqingjianjie`,`thumbsup_number`,`crazily_number`,`storeup_number`,`discuss_number`,`clicktime`) values 
-(1,'2025-05-08 20:32:33','食谱名称1','file/jiankangshipuFengmian1.jpg,file/jiankangshipuFengmian2.jpg,file/jiankangshipuFengmian3.jpg','所需食材1','食谱功效1','适合人群1','制作方法1','2025-05-08 20:32:33','详情简介1',1,1,1,1,'2025-05-08 20:32:33'),
-(2,'2025-05-08 20:32:33','食谱名称2','file/jiankangshipuFengmian2.jpg,file/jiankangshipuFengmian3.jpg,file/jiankangshipuFengmian4.jpg','所需食材2','食谱功效2','适合人群2','制作方法2','2025-05-08 20:32:33','详情简介2',2,2,2,2,'2025-05-08 20:32:33'),
+(1,'2025-05-08 20:32:33','减肥餐','file/jiankangshipuFengmian1.jpg,file/jiankangshipuFengmian2.jpg,file/jiankangshipuFengmian3.jpg','肉、蛋、奶','食谱功效1','肥胖人群','制作方法1','2025-05-08 20:32:33','<p>详情简介1</p>',1,1,1,4,'2025-05-08 20:32:33'),
+(2,'2025-05-08 20:32:33','食谱名称2','file/jiankangshipuFengmian2.jpg,file/jiankangshipuFengmian3.jpg,file/jiankangshipuFengmian4.jpg','所需食材2','食谱功效2','适合人群2','制作方法2','2025-05-08 20:32:33','详情简介2',3,2,2,4,'2025-05-08 20:32:33'),
 (3,'2025-05-08 20:32:33','食谱名称3','file/jiankangshipuFengmian3.jpg,file/jiankangshipuFengmian4.jpg,file/jiankangshipuFengmian5.jpg','所需食材3','食谱功效3','适合人群3','制作方法3','2025-05-08 20:32:33','详情简介3',3,3,3,3,'2025-05-08 20:32:33'),
 (4,'2025-05-08 20:32:33','食谱名称4','file/jiankangshipuFengmian4.jpg,file/jiankangshipuFengmian5.jpg,file/jiankangshipuFengmian6.jpg','所需食材4','食谱功效4','适合人群4','制作方法4','2025-05-08 20:32:33','详情简介4',4,4,4,4,'2025-05-08 20:32:33'),
 (5,'2025-05-08 20:32:33','食谱名称5','file/jiankangshipuFengmian5.jpg,file/jiankangshipuFengmian6.jpg,file/jiankangshipuFengmian7.jpg','所需食材5','食谱功效5','适合人群5','制作方法5','2025-05-08 20:32:33','详情简介5',5,5,5,5,'2025-05-08 20:32:33'),
@@ -284,12 +318,12 @@ CREATE TABLE `jiankangshuju` (
   `danguchun` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '胆固醇',
   `shuimianzhiliang` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '睡眠质量',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='健康数据';
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='健康数据';
 
 /*Data for the table `jiankangshuju` */
 
 insert  into `jiankangshuju`(`id`,`addtime`,`jiluriqi`,`yonghuzhanghao`,`yonghuxingming`,`touxiang`,`xingbie`,`tizhong`,`xueya`,`xuetang`,`xinlv`,`danguchun`,`shuimianzhiliang`) values 
-(1,'2025-05-08 20:32:33','2025-05-08','用户账号1','用户姓名1','file/jiankangshujuTouxiang1.jpg,file/jiankangshujuTouxiang2.jpg,file/jiankangshujuTouxiang3.jpg','性别1','体重1','血压1','血糖1','心率1','胆固醇1','睡眠质量1'),
+(1,'2025-05-08 20:32:33','2025-05-08','用户账号1','用户姓名1','file/yonghuTouxiang1.jpg','Woman','体重1','血压1','血糖1','心率1','胆固醇1','睡眠质量1'),
 (2,'2025-05-08 20:32:33','2025-05-08','用户账号2','用户姓名2','file/jiankangshujuTouxiang2.jpg,file/jiankangshujuTouxiang3.jpg,file/jiankangshujuTouxiang4.jpg','性别2','体重2','血压2','血糖2','心率2','胆固醇2','睡眠质量2'),
 (3,'2025-05-08 20:32:33','2025-05-08','用户账号3','用户姓名3','file/jiankangshujuTouxiang3.jpg,file/jiankangshujuTouxiang4.jpg,file/jiankangshujuTouxiang5.jpg','性别3','体重3','血压3','血糖3','心率3','胆固醇3','睡眠质量3'),
 (4,'2025-05-08 20:32:33','2025-05-08','用户账号4','用户姓名4','file/jiankangshujuTouxiang4.jpg,file/jiankangshujuTouxiang5.jpg,file/jiankangshujuTouxiang6.jpg','性别4','体重4','血压4','血糖4','心率4','胆固醇4','睡眠质量4'),
@@ -298,7 +332,8 @@ insert  into `jiankangshuju`(`id`,`addtime`,`jiluriqi`,`yonghuzhanghao`,`yonghux
 (7,'2025-05-08 20:32:33','2025-05-08','用户账号7','用户姓名7','file/jiankangshujuTouxiang7.jpg,file/jiankangshujuTouxiang8.jpg,file/jiankangshujuTouxiang9.jpg','性别7','体重7','血压7','血糖7','心率7','胆固醇7','睡眠质量7'),
 (8,'2025-05-08 20:32:33','2025-05-08','用户账号8','用户姓名8','file/jiankangshujuTouxiang8.jpg,file/jiankangshujuTouxiang9.jpg,file/jiankangshujuTouxiang10.jpg','性别8','体重8','血压8','血糖8','心率8','胆固醇8','睡眠质量8'),
 (9,'2025-05-08 20:32:33','2025-05-08','用户账号9','用户姓名9','file/jiankangshujuTouxiang9.jpg,file/jiankangshujuTouxiang10.jpg,file/jiankangshujuTouxiang11.jpg','性别9','体重9','血压9','血糖9','心率9','胆固醇9','睡眠质量9'),
-(10,'2025-05-08 20:32:33','2025-05-08','用户账号10','用户姓名10','file/jiankangshujuTouxiang10.jpg,file/jiankangshujuTouxiang11.jpg,file/jiankangshujuTouxiang12.jpg','性别10','体重10','血压10','血糖10','心率10','胆固醇10','睡眠质量10');
+(10,'2025-05-08 20:32:33','2025-05-08','用户账号10','用户姓名10','file/jiankangshujuTouxiang10.jpg,file/jiankangshujuTouxiang11.jpg,file/jiankangshujuTouxiang12.jpg','性别10','体重10','血压10','血糖10','心率10','胆固醇10','睡眠质量10'),
+(11,'2025-05-19 15:14:53','2025-05-19','用户账号1','用户姓名1','file/yonghuTouxiang1.jpg','Woman','65','120/80','5.0','98','7.25（high）','差');
 
 /*Table structure for table `jiankangzhishi` */
 
@@ -320,16 +355,16 @@ CREATE TABLE `jiankangzhishi` (
 /*Data for the table `jiankangzhishi` */
 
 insert  into `jiankangzhishi`(`id`,`addtime`,`biaoti`,`jianjie`,`tupian`,`neirong`,`fabushijian`,`discuss_number`,`storeup_number`) values 
-(1,'2025-05-08 20:32:33','标题1','简介1','file/jiankangzhishiTupian1.jpg,file/jiankangzhishiTupian2.jpg,file/jiankangzhishiTupian3.jpg','内容1','2025-05-08',1,1),
-(2,'2025-05-08 20:32:33','标题2','简介2','file/jiankangzhishiTupian2.jpg,file/jiankangzhishiTupian3.jpg,file/jiankangzhishiTupian4.jpg','内容2','2025-05-08',2,2),
+(1,'2025-05-08 20:32:33','标题1','简介1','file/jiankangzhishiTupian1.jpg,file/jiankangzhishiTupian2.jpg,file/jiankangzhishiTupian3.jpg','内容1','2025-05-08',1,2),
+(2,'2025-05-08 20:32:33','标题2','简介2','file/jiankangzhishiTupian2.jpg,file/jiankangzhishiTupian3.jpg,file/jiankangzhishiTupian4.jpg','内容2','2025-05-08',2,3),
 (3,'2025-05-08 20:32:33','标题3','简介3','file/jiankangzhishiTupian3.jpg,file/jiankangzhishiTupian4.jpg,file/jiankangzhishiTupian5.jpg','内容3','2025-05-08',3,3),
 (4,'2025-05-08 20:32:33','标题4','简介4','file/jiankangzhishiTupian4.jpg,file/jiankangzhishiTupian5.jpg,file/jiankangzhishiTupian6.jpg','内容4','2025-05-08',4,4),
 (5,'2025-05-08 20:32:33','标题5','简介5','file/jiankangzhishiTupian5.jpg,file/jiankangzhishiTupian6.jpg,file/jiankangzhishiTupian7.jpg','内容5','2025-05-08',5,5),
-(6,'2025-05-08 20:32:33','标题6','简介6','file/jiankangzhishiTupian6.jpg,file/jiankangzhishiTupian7.jpg,file/jiankangzhishiTupian8.jpg','内容6','2025-05-08',6,6),
+(6,'2025-05-08 20:32:33','标题6','简介6','file/jiankangzhishiTupian6.jpg,file/jiankangzhishiTupian7.jpg,file/jiankangzhishiTupian8.jpg','内容6','2025-05-08',6,7),
 (7,'2025-05-08 20:32:33','标题7','简介7','file/jiankangzhishiTupian7.jpg,file/jiankangzhishiTupian8.jpg,file/jiankangzhishiTupian9.jpg','内容7','2025-05-08',7,7),
 (8,'2025-05-08 20:32:33','标题8','简介8','file/jiankangzhishiTupian8.jpg,file/jiankangzhishiTupian9.jpg,file/jiankangzhishiTupian10.jpg','内容8','2025-05-08',8,8),
 (9,'2025-05-08 20:32:33','标题9','简介9','file/jiankangzhishiTupian9.jpg,file/jiankangzhishiTupian10.jpg,file/jiankangzhishiTupian11.jpg','内容9','2025-05-08',9,9),
-(10,'2025-05-08 20:32:33','标题10','简介10','file/jiankangzhishiTupian10.jpg,file/jiankangzhishiTupian11.jpg,file/jiankangzhishiTupian12.jpg','内容10','2025-05-08',10,10);
+(10,'2025-05-08 20:32:33','标题10','简介10','file/jiankangzhishiTupian10.jpg,file/jiankangzhishiTupian11.jpg,file/jiankangzhishiTupian12.jpg','<p>内容10</p>','2025-05-08',11,10);
 
 /*Table structure for table `jiankangzhuanjia` */
 
@@ -353,7 +388,7 @@ CREATE TABLE `jiankangzhuanjia` (
 /*Data for the table `jiankangzhuanjia` */
 
 insert  into `jiankangzhuanjia`(`id`,`addtime`,`zhuanjiazhanghao`,`zhuanjiamima`,`zhuanjiaxingming`,`touxiang`,`xingbie`,`nianling`,`shanzhanglingyu`,`gerenjianjie`) values 
-(191,'2025-05-08 20:32:33','专家账号1','e10adc3949ba59abbe56e057f20f883e','专家姓名1','file/jiankangzhuanjiaTouxiang1.jpg','男','年龄1','擅长领域1','个人简介1'),
+(191,'2025-05-08 20:32:33','专家账号1','e10adc3949ba59abbe56e057f20f883e','专家姓名1','file/jiankangzhuanjiaTouxiang1.jpg','男','年龄1','擅长领域1','毕业于世界医科大学，研究生学历，博士学位，现为世界医院副院长、减肥科荣誉主任，获得世界发明专利100余项，'),
 (192,'2025-05-08 20:32:33','专家账号2','e10adc3949ba59abbe56e057f20f883e','专家姓名2','file/jiankangzhuanjiaTouxiang2.jpg','男','年龄2','擅长领域2','个人简介2'),
 (193,'2025-05-08 20:32:33','专家账号3','e10adc3949ba59abbe56e057f20f883e','专家姓名3','file/jiankangzhuanjiaTouxiang3.jpg','男','年龄3','擅长领域3','个人简介3'),
 (194,'2025-05-08 20:32:33','专家账号4','e10adc3949ba59abbe56e057f20f883e','专家姓名4','file/jiankangzhuanjiaTouxiang4.jpg','男','年龄4','擅长领域4','个人简介4'),
@@ -411,16 +446,17 @@ CREATE TABLE `jiatingchengyuan` (
   `addtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `shoujihaoma` varchar(20) DEFAULT NULL COMMENT '手机号码',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COMMENT='家庭成员';
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COMMENT='家庭成员';
 
 /*Data for the table `jiatingchengyuan` */
 
 insert  into `jiatingchengyuan`(`id`,`yonghuzhanghao`,`yonghuxingming`,`chengyuanzhanghao`,`chengyuanxingming`,`relationship`,`remark`,`addtime`,`shoujihaoma`) values 
 (3,'用户账号4','用户姓名4',NULL,NULL,'祖母','123123','2025-05-15 17:35:07','19819881114'),
 (4,'用户账号2','用户姓名2','',NULL,'儿子','2222','2025-05-15 18:36:30','19819881112'),
-(9,'用户账号3','用户姓名3','用户账号1',NULL,'女儿','312312','2025-05-15 18:56:53','19819881113'),
+(9,'用户账号3','用户姓名3','用户账号1',NULL,'Wife','312312','2025-05-15 18:56:53','19819881113'),
 (10,'用户账号2','用户姓名2','用户账号1',NULL,'儿子','wdaddasd','2025-05-15 19:05:06','19819881112'),
-(11,'用户账号1','用户姓名1','用户账号2',NULL,'配偶','12123','2025-05-15 19:06:10','19819881111');
+(11,'用户账号1','用户姓名1','用户账号2',NULL,'配偶','12123','2025-05-15 19:06:10','19819881111'),
+(13,'用户账号7','用户姓名7','用户账号1',NULL,'Mother','','2025-05-20 16:08:26','19819881117');
 
 /*Table structure for table `menu` */
 
@@ -464,7 +500,7 @@ insert  into `news`(`id`,`addtime`,`title`,`introduction`,`picture`,`content`) v
 (7,'2025-05-08 20:32:33','若月亮没来-王宇宙Leto，乔浚丞','《若月亮没来(若是月亮还没来)》是王宇宙Leto，乔浚丞演唱的歌曲，于2024年1月22日上线发行。','file/newsPicture7.jpg','风吹过山 船靠了岸  风光呀 一点点看  我走向北 你去往南\n故事呀 一篇篇翻  好烦 又加班到很晚  你搭上空荡的 地铁已是末班\n好烦 很爱却要分开  恋爱谈不明白  好烦 接近理想好难 却又还很不甘\n如何拥抱平淡  如果 最难得到圆满  不如选择坦然 若是月亮还没来\n路灯也可照窗台  照着白色的山茶花微微开  若是晨风还没来\n晚风也可吹入怀  吹着那一地树影温柔摇摆  你总以为你不够好\n不够苗条和美貌  可是完美谁能达到  做你自己就很好\n烦恼烦恼拥有太少  没有房车没有钞票  可爱你的人永远会 \n把你当做心尖珍宝  我也懂大多数的时候  你只想逃离这世界\n我也懂太多的情绪在  一个人失眠的深夜 你可以是悲伤或者埋怨\n但请不要放弃明天  这一直灰暗的世界  我想看见你的笑脸\n若是月亮还没来  路灯也可照窗台  照着白色的山茶花微微开\n若是晨风还没来  晚风也可吹入怀  吹着那一地树影温柔摇摆\n若是月亮还没来  路灯也可照窗台  照着白色的山茶花微微开\n若是晨风还没来  晚风也可吹入怀  吹着那一地树影温柔摇摆\n李哲今年1月份创作了《若月亮没来》这首歌。随着歌曲的热度不断上升，约他写歌的人越来越多，他的工作变得更加繁忙。\n近年来，李哲凭借对音乐的热爱和不懈的努力，创作了几百首音乐作品，其中不乏广为人知的佳作，例如王栎鑫的《一个人》、何赛飞与叶炫清在央视演唱的《木兰诗》等歌曲，都是由李哲作曲。\n如今，李哲的音乐才华和努力得到了业界的广泛认可，他的音乐作品多次登上各大音乐平台的热歌榜，成为备受瞩目的新生代音乐人。现在，走在街头、坐在车里，经常会听到自己的作品。看到自己的音乐作品受到如此广泛的喜爱和认可，我感到非常有成就感。李哲笑着说，他会努力创作更多优秀音乐作品，为家乡争光。'),
 (8,'2025-05-08 20:32:33','-米阳光传递一份温暖','黑暗中跌倒，坚强里苦笑。只是因为青春还在，所以梦想一直在路上。当年华未曾老去，青春没有散场，留给幽暗的岁月，还有几分值得珍藏?孤独无助时、伤心难过时总爱恣意挥霍愤怒。伤了、痛了原本以为就都结束了;可是心里还不甘愿放弃，就只为一个理由，有梦想的人永不孤单。','file/newsPicture8.jpg','放进去了的青春，走不出来的悲伤却总是给年少时的我们留下太多无法割舍的情怀。记录岁月的足迹，聆听时光的故事。然轻吟浅唱出，青春嘉年华。\n故事里总会有，那些太多感慨于时间的无情，太多对往事的追忆，太多的太多，而今刻在了心里也停泻在了流年里。一段无法抹去的回忆，也只不过是一场烟火燃放的瞬间，却也一辈子在脑海里兜兜转转。很是怀念那些相遇的日子，邂逅了幸福也留在了时间轨迹里。时而想起，那些曾肩并肩奋斗的日子，那些写满感动与快乐的岁月。\n如今，我们似乎渐行渐远，彼此奋斗着青春的轮回。渐渐的，我们都长大了，时间改变了我们时刻分享彼此快乐与不快乐的习惯，青春的渐逝，岁月的更迭让我们变得都不再联系，身边的朋友也越来越少;那些欢笑，那些幸福的流年也随着我们的陌生而变得更加奢侈。也许多年以后，我们都有了自己的朋友，有了自己关心的人。那时，我们再细数那些癫狂在你生命里一辈子的记忆故事，蓦然发现一切都停留在了回忆里。'),
 (9,'2025-05-08 20:32:33','自己的路自己走，自己的心自己懂','岛上书店》中有句话:每个人的生命里，都有最艰难的那一年，将人生变得美好而辽阔。\n你有没有经历过那么一年，在走过的岁月中跋涉得异常艰难困苦，却仍无法灭前行的勇气。哪怕所有人都极力劝阻，也要不甘心地试一试;哪怕前方已没有道路，却还在坚定前行;哪怕再看不到任何希望，也要竭尽全力地为自己争取一个机会。','file/newsPicture9.jpg','你开始不动声色的扮演着一个大人，经历着生活日复一日的打。\n每天醒在天还没亮的五六点，挤过早高峰的地下铁，面对成山的工作，加班到深夜倒下就睡更成为了日常，还要应付各色的人际关系，逐渐开始接受努力也不一定有回报的道理。\n这段日子也许很长，但你没有放弃对生活的信心，始终相信人生总会变得一帆风顺，更坚信每件事的最后都会有一个好的结局，如果不是，说明还没到最后。\n于是你树立新的目标，让这一年的奔波更有方向。\n虽然永远无法预料明天是晴是雨，也无法预知你在乎的人是否还在身边，你一直以来的坚持究竟能换来什么。\n但你能决定的是，今天有没有备好雨伞，有没有好好爱人以及是否为自己追求的理想拼尽全力。\n永远不要只看见前方路途遥远而忘了从前的自己坚持了多久才走到了这里，\n今天拼尽全力虽然艰辛万分，在未来都将成为落在你身上的礼物。'),
-(10,'2025-05-08 20:32:33','愿你有明天可奔赴，有过往可回头','此去经年，用一张离家的车票，换一段有故事可说的人生。\n大概就是那时候怀揣着梦想，背上了行囊，一腔热血决定远行的你。独自拎着一只行李箱，背着双肩包在深夜抵达一个陌生的城市，站在人潮涌动的车站出口，望着宽敞公路上车水马龙的喧嚣，城市里亮如白昼的繁华。','file/newsPicture10.jpg','这世界上的人们都活的匆匆忙忙，每个人看起来都很焦虑，每个人都有自己的苦楚，却往往找不到人可以诉说。也许你的倾诉，对别人来说是一种打扰，而且别人没经历过你的经历，所以无法体会你的心情。我们总是在心情不好的时候拿着手机，翻翻通讯录，然后再默默放下手机，压住心中那股想要找人说说话的想法。\n等到低落的情绪慢慢有些好转，才开始明白，人这一生，无论是什么样的路，都是自己的选择，冲动也好，深思熟虑也罢，自己选的路，不管多难，都要自己走下去。心中的感受，不管是复杂还是简单，都只能自己来懂，别人帮不了你，也安慰不了你，顶多给你一些无济于事的劝告，最后还得靠自己想开。你选的幸福，你自己享受;你选的眼泪，你自己来流，生活就是如此，自己的路，自己走;自己的心，自己懂。');
+(10,'2025-05-08 20:32:33','愿你有明天可奔赴，有过往可回头','此去经年，用一张离家的车票，换一段有故事可说的人生。\n大概就是那时候怀揣着梦想，背上了行囊，一腔热血决定远行的你。独自拎着一只行李箱，背着双肩包在深夜抵达一个陌生的城市，站在人潮涌动的车站出口，望着宽敞公路上车水马龙的喧嚣，城市里亮如白昼的繁华。','file/newsPicture10.jpg,file/1749314649917.jpg','<p>这世界上的人们都活的匆匆忙忙，每个人看起来都很焦虑，每个人都有自己的苦楚，却往往找不到人可以诉说。也许你的倾诉，对别人来说是一种打扰，而且别人没经历过你的经历，所以无法体会你的心情。我们总是在心情不好的时候拿着手机，翻翻通讯录，然后再默默放下手机，压住心中那股想要找人说说话的想法。</p><p>等到低落的情绪慢慢有些好转，才开始明白，人这一生，无论是什么样的路，都是自己的选择，冲动也好，深思熟虑也罢，自己选的路，不管多难，都要自己走下去。心中的感受，不管是复杂还是简单，都只能自己来懂，别人帮不了你，也安慰不了你，顶多给你一些无济于事的劝告，最后还得靠自己想开。你选的幸福，你自己享受;你选的眼泪，你自己来流，生活就是如此，自己的路，自己走;自己的心，自己懂。</p>');
 
 /*Table structure for table `online_message` */
 
@@ -477,7 +513,7 @@ CREATE TABLE `online_message` (
   `phone` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '电话',
   `content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT '留言内容',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='在线留言';
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='在线留言';
 
 /*Data for the table `online_message` */
 
@@ -491,7 +527,8 @@ insert  into `online_message`(`id`,`addtime`,`name`,`phone`,`content`) values
 (7,'2025-05-08 20:32:33','姓名7','电话7','留言内容7'),
 (8,'2025-05-08 20:32:33','姓名8','电话8','留言内容8'),
 (9,'2025-05-08 20:32:33','姓名9','电话9','留言内容9'),
-(10,'2025-05-08 20:32:33','姓名10','电话10','留言内容10');
+(10,'2025-05-08 20:32:33','姓名10','电话10','留言内容10'),
+(11,'2025-05-19 14:14:01','555','18246159887','111');
 
 /*Table structure for table `popup_remind` */
 
@@ -507,7 +544,7 @@ CREATE TABLE `popup_remind` (
   `content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT '内容',
   `remind_time` datetime DEFAULT NULL COMMENT '提醒时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='吃药提醒';
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='吃药提醒';
 
 /*Data for the table `popup_remind` */
 
@@ -521,7 +558,8 @@ insert  into `popup_remind`(`id`,`addtime`,`userid`,`title`,`type`,`brief`,`cont
 (7,'2025-05-08 20:32:33',7,'标题7','私人','简介7','内容7','2025-05-08 20:32:33'),
 (8,'2025-05-08 20:32:33',8,'标题8','私人','简介8','内容8','2025-05-08 20:32:33'),
 (9,'2025-05-08 20:32:33',9,'标题9','私人','简介9','内容9','2025-05-08 20:32:33'),
-(10,'2025-05-08 20:32:33',10,'标题10','私人','简介10','内容10','2025-05-08 20:32:33');
+(10,'2025-05-08 20:32:33',10,'标题10','私人','简介10','内容10','2025-05-08 20:32:33'),
+(11,'2025-05-18 03:07:06',71,'糖尿病用药','私人','','','2025-06-08 00:33:20');
 
 /*Table structure for table `storeup` */
 
@@ -539,9 +577,36 @@ CREATE TABLE `storeup` (
   `remark` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '备注',
   `userid` bigint(20) NOT NULL COMMENT '用户id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='我的收藏';
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='我的收藏';
 
 /*Data for the table `storeup` */
+
+insert  into `storeup`(`id`,`addtime`,`refid`,`tablename`,`name`,`picture`,`type`,`inteltype`,`remark`,`userid`) values 
+(1,'2025-05-17 18:27:52',2,'jiankangzhishi','标题2','file/jiankangzhishiTupian2.jpg','1',NULL,NULL,71),
+(2,'2025-05-19 16:18:37',1,'popupremind','标题1','','61',NULL,NULL,191),
+(3,'2025-05-19 16:18:37',2,'popupremind','标题2','','61',NULL,NULL,191),
+(4,'2025-05-19 16:18:37',3,'popupremind','标题3','','61',NULL,NULL,191),
+(5,'2025-05-19 16:18:37',4,'popupremind','标题4','','61',NULL,NULL,191),
+(6,'2025-05-19 16:18:37',5,'popupremind','标题5','','61',NULL,NULL,191),
+(7,'2025-05-19 16:18:37',6,'popupremind','标题6','','61',NULL,NULL,191),
+(8,'2025-05-19 16:18:37',7,'popupremind','标题7','','61',NULL,NULL,191),
+(9,'2025-05-19 16:18:37',8,'popupremind','标题8','','61',NULL,NULL,191),
+(10,'2025-05-19 16:18:37',9,'popupremind','标题9','','61',NULL,NULL,191),
+(11,'2025-05-19 16:18:37',10,'popupremind','标题10','','61',NULL,NULL,191),
+(12,'2025-05-19 16:23:35',1,'popupremind','标题1','','61',NULL,NULL,71),
+(13,'2025-05-19 16:23:35',2,'popupremind','标题2','','61',NULL,NULL,71),
+(14,'2025-05-19 16:23:35',3,'popupremind','标题3','','61',NULL,NULL,71),
+(15,'2025-05-19 16:23:36',4,'popupremind','标题4','','61',NULL,NULL,71),
+(16,'2025-05-19 16:23:36',5,'popupremind','标题5','','61',NULL,NULL,71),
+(17,'2025-05-19 16:23:36',6,'popupremind','标题6','','61',NULL,NULL,71),
+(18,'2025-05-19 16:23:37',7,'popupremind','标题7','','61',NULL,NULL,71),
+(19,'2025-05-19 16:23:37',8,'popupremind','标题8','','61',NULL,NULL,71),
+(20,'2025-05-19 16:23:37',9,'popupremind','标题9','','61',NULL,NULL,71),
+(21,'2025-05-19 16:23:37',10,'popupremind','标题10','','61',NULL,NULL,71),
+(24,'2025-05-28 20:33:51',1,'jiankangzhishi','标题1','file/jiankangzhishiTupian1.jpg','1',NULL,NULL,71),
+(25,'2025-05-28 20:33:57',6,'jiankangzhishi','标题6','file/jiankangzhishiTupian6.jpg','1',NULL,NULL,71),
+(26,'2025-06-02 13:11:34',11,'popupremind','糖尿病用药','','61',NULL,NULL,71),
+(27,'2025-06-08 00:23:44',2,'jiankangshipu','食谱名称2','file/jiankangshipuFengmian2.jpg','21',NULL,NULL,71);
 
 /*Table structure for table `syslog` */
 
@@ -557,13 +622,112 @@ CREATE TABLE `syslog` (
   `time` bigint(20) DEFAULT NULL COMMENT '请求时长(毫秒)',
   `ip` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'ip地址',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='操作日志';
+) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='操作日志';
 
 /*Data for the table `syslog` */
 
 insert  into `syslog`(`id`,`addtime`,`username`,`operation`,`method`,`params`,`time`,`ip`) values 
 (1,'2025-05-15 02:00:23','用户账号1','修改用户','com.cl.controller.YonghuController.update()','{\"id\":71,\"yonghuzhanghao\":\"用户账号1\",\"yonghumima\":\"e10adc3949ba59abbe56e057f20f883e\",\"yonghuxingming\":\"用户姓名1\",\"touxiang\":\"file/yonghuTouxiang1.jpg\",\"xingbie\":\"男\",\"shoujihaoma\":\"19819881111\",\"addtime\":\"May 8, 2025 8:32:33 PM\"}',33,'127.0.0.1'),
-(2,'2025-05-15 18:40:16','用户账号1','修改用户','com.cl.controller.YonghuController.update()','{\"id\":71,\"yonghuzhanghao\":\"用户账号1\",\"yonghumima\":\"e10adc3949ba59abbe56e057f20f883e\",\"yonghuxingming\":\"用户姓名1\",\"touxiang\":\"file/yonghuTouxiang1.jpg\",\"xingbie\":\"男\",\"shoujihaoma\":\"19819881111\",\"addtime\":\"May 8, 2025 8:32:33 PM\"}',7,'127.0.0.1');
+(2,'2025-05-15 18:40:16','用户账号1','修改用户','com.cl.controller.YonghuController.update()','{\"id\":71,\"yonghuzhanghao\":\"用户账号1\",\"yonghumima\":\"e10adc3949ba59abbe56e057f20f883e\",\"yonghuxingming\":\"用户姓名1\",\"touxiang\":\"file/yonghuTouxiang1.jpg\",\"xingbie\":\"男\",\"shoujihaoma\":\"19819881111\",\"addtime\":\"May 8, 2025 8:32:33 PM\"}',7,'127.0.0.1'),
+(3,'2025-05-17 14:30:07','admin','新增客服聊天','com.cl.controller.ChatController.save()','{\"id\":11,\"adminid\":1,\"reply\":\"6\",\"isreply\":0,\"userid\":1}',64,'::1'),
+(4,'2025-05-17 14:31:58','用户账号1','新增好友表','com.cl.controller.ChatFriendController.add()','{\"id\":11,\"uid\":71,\"fid\":198,\"name\":\"专家账号8\",\"picture\":\"file/jiankangzhuanjiaTouxiang8.jpg\",\"tablename\":\"jiankangzhuanjia\",\"type\":2}',44,'127.0.0.1'),
+(5,'2025-05-17 14:31:58','用户账号1','新增好友表','com.cl.controller.ChatFriendController.add()','{\"id\":12,\"uid\":198,\"fid\":71,\"name\":\"用户账号1\",\"picture\":\"file/yonghuTouxiang1.jpg\",\"tablename\":\"yonghu\",\"type\":2}',3,'127.0.0.1'),
+(6,'2025-05-17 14:31:58','用户账号1','新增消息表','com.cl.controller.ChatMessageController.add()','{\"id\":11,\"uid\":71,\"fid\":198,\"content\":\"file/1747463516995.jpg\",\"format\":2}',3,'127.0.0.1'),
+(7,'2025-05-17 14:32:11','用户账号1','新增好友表','com.cl.controller.ChatFriendController.add()','{\"id\":13,\"uid\":71,\"fid\":191,\"name\":\"专家账号1\",\"picture\":\"file/jiankangzhuanjiaTouxiang1.jpg\",\"tablename\":\"jiankangzhuanjia\",\"type\":2}',13,'127.0.0.1'),
+(8,'2025-05-17 14:32:11','用户账号1','新增好友表','com.cl.controller.ChatFriendController.add()','{\"id\":14,\"uid\":191,\"fid\":71,\"name\":\"用户账号1\",\"picture\":\"file/yonghuTouxiang1.jpg\",\"tablename\":\"yonghu\",\"type\":2}',14,'127.0.0.1'),
+(9,'2025-05-17 14:32:11','用户账号1','新增消息表','com.cl.controller.ChatMessageController.add()','{\"id\":12,\"uid\":71,\"fid\":191,\"content\":\"file/1747463529989.jpg\",\"format\":2}',14,'127.0.0.1'),
+(10,'2025-05-17 14:32:53','admin','修改用户','com.cl.controller.YonghuController.update()','{\"id\":78,\"yonghuzhanghao\":\"用户账号8\",\"yonghumima\":\"e10adc3949ba59abbe56e057f20f883e\",\"yonghuxingming\":\"用户姓名8\",\"touxiang\":\"file/yonghuTouxiang8.jpg\",\"xingbie\":\"Woman\",\"shoujihaoma\":\"19819881118\",\"addtime\":\"May 8, 2025 8:32:33 PM\"}',2,'::1'),
+(11,'2025-05-17 14:33:01','admin','修改用户','com.cl.controller.YonghuController.update()','{\"id\":75,\"yonghuzhanghao\":\"用户账号5\",\"yonghumima\":\"e10adc3949ba59abbe56e057f20f883e\",\"yonghuxingming\":\"用户姓名5\",\"touxiang\":\"file/yonghuTouxiang5.jpg\",\"xingbie\":\"Woman\",\"shoujihaoma\":\"19819881115\",\"addtime\":\"May 8, 2025 8:32:33 PM\"}',1,'::1'),
+(12,'2025-05-17 14:35:27','admin','修改用户','com.cl.controller.YonghuController.update()','{\"id\":71,\"yonghuzhanghao\":\"用户账号1\",\"yonghumima\":\"e10adc3949ba59abbe56e057f20f883e\",\"yonghuxingming\":\"用户姓名1\",\"touxiang\":\"file/yonghuTouxiang1.jpg\",\"xingbie\":\"Woman\",\"shoujihaoma\":\"19819881111\",\"addtime\":\"May 8, 2025 8:32:33 PM\"}',1,'::1'),
+(13,'2025-05-17 18:27:53','用户账号1','新增我的收藏','com.cl.controller.StoreupController.add()','{\"id\":1,\"refid\":2,\"tablename\":\"jiankangzhishi\",\"name\":\"标题2\",\"picture\":\"file/jiankangzhishiTupian2.jpg\",\"type\":\"1\",\"userid\":71}',33,'0:0:0:0:0:0:0:1'),
+(14,'2025-05-17 18:27:53','用户账号1','修改健康知识','com.cl.controller.JiankangzhishiController.update()','{\"id\":2,\"biaoti\":\"标题2\",\"jianjie\":\"简介2\",\"tupian\":\"file/jiankangzhishiTupian2.jpg,file/jiankangzhishiTupian3.jpg,file/jiankangzhishiTupian4.jpg\",\"neirong\":\"内容2\",\"fabushijian\":\"May 8, 2025 12:00:00 AM\",\"discussNumber\":2,\"storeupNumber\":3,\"addtime\":\"May 8, 2025 8:32:33 PM\"}',3,'0:0:0:0:0:0:0:1'),
+(15,'2025-05-18 03:07:07','用户账号1','新增吃药提醒','com.cl.controller.PopupRemindController.save()','{\"id\":11,\"userid\":71,\"title\":\"糖尿病用药\",\"type\":\"私人\",\"brief\":\"\",\"content\":\"\",\"remindTime\":\"May 30, 2025 12:00:00 AM\"}',105,'127.0.0.1'),
+(16,'2025-05-18 23:31:54','用户账号1','新增健康食谱评论表','com.cl.controller.DiscussjiankangshipuController.add()','{\"id\":1,\"refid\":2,\"userid\":71,\"avatarurl\":\"file/yonghuTouxiang1.jpg\",\"nickname\":\"用户账号1\",\"content\":\"\\u003cp\\u003e可以\\u003c/p\\u003e\"}',58,'127.0.0.1'),
+(17,'2025-05-18 23:31:54','用户账号1','修改健康食谱','com.cl.controller.JiankangshipuController.update()','{\"id\":2,\"shipumingcheng\":\"食谱名称2\",\"fengmian\":\"file/jiankangshipuFengmian2.jpg,file/jiankangshipuFengmian3.jpg,file/jiankangshipuFengmian4.jpg\",\"suoxushicai\":\"所需食材2\",\"shipugongxiao\":\"食谱功效2\",\"shiherenqun\":\"适合人群2\",\"zhizuofangfa\":\"制作方法2\",\"fabushijian\":\"May 8, 2025 8:32:33 PM\",\"xiangqingjianjie\":\"详情简介2\",\"thumbsupNumber\":2,\"crazilyNumber\":2,\"storeupNumber\":2,\"discussNumber\":3,\"clicktime\":\"May 8, 2025 8:32:33 PM\",\"addtime\":\"May 8, 2025 8:32:33 PM\"}',1,'127.0.0.1'),
+(18,'2025-05-19 14:14:02','用户账号1','新增在线留言','com.cl.controller.OnlineMessageController.save()','{\"id\":11,\"name\":\"555\",\"phone\":\"18246159887\",\"content\":\"111\"}',76,'127.0.0.1'),
+(19,'2025-05-19 14:14:12','用户账号1','新增客服聊天','com.cl.controller.ChatController.add()','{\"id\":12,\"ask\":\"你好\",\"isreply\":1,\"userid\":71}',47,'127.0.0.1'),
+(20,'2025-05-19 14:14:15','用户账号1','新增客服聊天','com.cl.controller.ChatController.add()','{\"id\":13,\"ask\":\"hi\\n\",\"isreply\":1,\"userid\":71}',16,'127.0.0.1'),
+(21,'2025-05-19 15:14:53','用户账号1','新增健康数据','com.cl.controller.JiankangshujuController.save()','{\"id\":11,\"jiluriqi\":\"May 19, 2025 12:00:00 AM\",\"yonghuzhanghao\":\"用户账号1\",\"yonghuxingming\":\"用户姓名1\",\"touxiang\":\"file/yonghuTouxiang1.jpg\",\"xingbie\":\"Woman\",\"tizhong\":\"65\",\"xueya\":\"120/80\",\"xuetang\":\"5.0\",\"xinlv\":\"98\",\"danguchun\":\"7.25（high）\",\"shuimianzhiliang\":\"差\"}',62,'127.0.0.1'),
+(22,'2025-05-19 15:15:33','用户账号1','修改健康数据','com.cl.controller.JiankangshujuController.update()','{\"id\":1,\"jiluriqi\":\"May 8, 2025 12:00:00 AM\",\"yonghuzhanghao\":\"用户账号1\",\"yonghuxingming\":\"用户姓名1\",\"touxiang\":\"file/yonghuTouxiang1.jpg\",\"xingbie\":\"Woman\",\"tizhong\":\"体重1\",\"xueya\":\"血压1\",\"xuetang\":\"血糖1\",\"xinlv\":\"心率1\",\"danguchun\":\"胆固醇1\",\"shuimianzhiliang\":\"睡眠质量1\",\"addtime\":\"May 8, 2025 8:32:33 PM\"}',5,'127.0.0.1'),
+(23,'2025-05-19 15:24:26','admin','修改健康专家','com.cl.controller.JiankangzhuanjiaController.update()','{\"id\":191,\"zhuanjiazhanghao\":\"专家账号1\",\"zhuanjiamima\":\"e10adc3949ba59abbe56e057f20f883e\",\"zhuanjiaxingming\":\"专家姓名1\",\"touxiang\":\"file/jiankangzhuanjiaTouxiang1.jpg\",\"xingbie\":\"男\",\"nianling\":\"年龄1\",\"shanzhanglingyu\":\"擅长领域1\",\"gerenjianjie\":\"毕业于世界医科大学，研究生学历，博士学位，现为世界医院副院长、减肥科荣誉主任，获得世界发明专利100余项，\",\"addtime\":\"May 8, 2025 8:32:33 PM\"}',3,'::1'),
+(24,'2025-05-19 15:28:39','admin','修改健康食谱','com.cl.controller.JiankangshipuController.update()','{\"id\":1,\"shipumingcheng\":\"减肥餐\",\"fengmian\":\"file/jiankangshipuFengmian1.jpg,file/jiankangshipuFengmian2.jpg,file/jiankangshipuFengmian3.jpg\",\"suoxushicai\":\"肉、蛋、奶\",\"shipugongxiao\":\"食谱功效1\",\"shiherenqun\":\"肥胖人群\",\"zhizuofangfa\":\"制作方法1\",\"fabushijian\":\"May 8, 2025 8:32:33 PM\",\"xiangqingjianjie\":\"\\u003cp\\u003e详情简介1\\u003c/p\\u003e\",\"thumbsupNumber\":1,\"crazilyNumber\":1,\"storeupNumber\":1,\"discussNumber\":1,\"clicktime\":\"May 8, 2025 8:32:33 PM\",\"addtime\":\"May 8, 2025 8:32:33 PM\"}',3,'::1'),
+(25,'2025-05-19 16:18:38','admin','新增我的收藏','com.cl.controller.StoreupController.add()','{\"id\":3,\"refid\":2,\"tablename\":\"popupremind\",\"name\":\"标题2\",\"picture\":\"\",\"type\":\"61\",\"userid\":191}',9,'::1'),
+(26,'2025-05-19 16:18:38','admin','新增我的收藏','com.cl.controller.StoreupController.add()','{\"id\":2,\"refid\":1,\"tablename\":\"popupremind\",\"name\":\"标题1\",\"picture\":\"\",\"type\":\"61\",\"userid\":191}',14,'::1'),
+(27,'2025-05-19 16:18:38','admin','新增我的收藏','com.cl.controller.StoreupController.add()','{\"id\":5,\"refid\":4,\"tablename\":\"popupremind\",\"name\":\"标题4\",\"picture\":\"\",\"type\":\"61\",\"userid\":191}',4,'::1'),
+(28,'2025-05-19 16:18:38','admin','新增我的收藏','com.cl.controller.StoreupController.add()','{\"id\":4,\"refid\":3,\"tablename\":\"popupremind\",\"name\":\"标题3\",\"picture\":\"\",\"type\":\"61\",\"userid\":191}',13,'::1'),
+(29,'2025-05-19 16:18:38','admin','新增我的收藏','com.cl.controller.StoreupController.add()','{\"id\":6,\"refid\":5,\"tablename\":\"popupremind\",\"name\":\"标题5\",\"picture\":\"\",\"type\":\"61\",\"userid\":191}',7,'::1'),
+(30,'2025-05-19 16:18:38','admin','新增我的收藏','com.cl.controller.StoreupController.add()','{\"id\":7,\"refid\":6,\"tablename\":\"popupremind\",\"name\":\"标题6\",\"picture\":\"\",\"type\":\"61\",\"userid\":191}',2,'::1'),
+(31,'2025-05-19 16:18:38','admin','新增我的收藏','com.cl.controller.StoreupController.add()','{\"id\":8,\"refid\":7,\"tablename\":\"popupremind\",\"name\":\"标题7\",\"picture\":\"\",\"type\":\"61\",\"userid\":191}',5,'::1'),
+(32,'2025-05-19 16:18:38','admin','新增我的收藏','com.cl.controller.StoreupController.add()','{\"id\":9,\"refid\":8,\"tablename\":\"popupremind\",\"name\":\"标题8\",\"picture\":\"\",\"type\":\"61\",\"userid\":191}',10,'::1'),
+(33,'2025-05-19 16:18:38','admin','新增我的收藏','com.cl.controller.StoreupController.add()','{\"id\":10,\"refid\":9,\"tablename\":\"popupremind\",\"name\":\"标题9\",\"picture\":\"\",\"type\":\"61\",\"userid\":191}',3,'::1'),
+(34,'2025-05-19 16:18:38','admin','新增我的收藏','com.cl.controller.StoreupController.add()','{\"id\":11,\"refid\":10,\"tablename\":\"popupremind\",\"name\":\"标题10\",\"picture\":\"\",\"type\":\"61\",\"userid\":191}',8,'::1'),
+(35,'2025-05-19 16:23:35','用户账号1','新增我的收藏','com.cl.controller.StoreupController.add()','{\"id\":12,\"refid\":1,\"tablename\":\"popupremind\",\"name\":\"标题1\",\"picture\":\"\",\"type\":\"61\",\"userid\":71}',105,'127.0.0.1'),
+(36,'2025-05-19 16:23:35','用户账号1','新增我的收藏','com.cl.controller.StoreupController.add()','{\"id\":13,\"refid\":2,\"tablename\":\"popupremind\",\"name\":\"标题2\",\"picture\":\"\",\"type\":\"61\",\"userid\":71}',36,'127.0.0.1'),
+(37,'2025-05-19 16:23:36','用户账号1','新增我的收藏','com.cl.controller.StoreupController.add()','{\"id\":14,\"refid\":3,\"tablename\":\"popupremind\",\"name\":\"标题3\",\"picture\":\"\",\"type\":\"61\",\"userid\":71}',13,'127.0.0.1'),
+(38,'2025-05-19 16:23:36','用户账号1','新增我的收藏','com.cl.controller.StoreupController.add()','{\"id\":15,\"refid\":4,\"tablename\":\"popupremind\",\"name\":\"标题4\",\"picture\":\"\",\"type\":\"61\",\"userid\":71}',18,'127.0.0.1'),
+(39,'2025-05-19 16:23:36','用户账号1','新增我的收藏','com.cl.controller.StoreupController.add()','{\"id\":16,\"refid\":5,\"tablename\":\"popupremind\",\"name\":\"标题5\",\"picture\":\"\",\"type\":\"61\",\"userid\":71}',5,'127.0.0.1'),
+(40,'2025-05-19 16:23:37','用户账号1','新增我的收藏','com.cl.controller.StoreupController.add()','{\"id\":17,\"refid\":6,\"tablename\":\"popupremind\",\"name\":\"标题6\",\"picture\":\"\",\"type\":\"61\",\"userid\":71}',18,'127.0.0.1'),
+(41,'2025-05-19 16:23:37','用户账号1','新增我的收藏','com.cl.controller.StoreupController.add()','{\"id\":18,\"refid\":7,\"tablename\":\"popupremind\",\"name\":\"标题7\",\"picture\":\"\",\"type\":\"61\",\"userid\":71}',17,'127.0.0.1'),
+(42,'2025-05-19 16:23:37','用户账号1','新增我的收藏','com.cl.controller.StoreupController.add()','{\"id\":19,\"refid\":8,\"tablename\":\"popupremind\",\"name\":\"标题8\",\"picture\":\"\",\"type\":\"61\",\"userid\":71}',3,'127.0.0.1'),
+(43,'2025-05-19 16:23:38','用户账号1','新增我的收藏','com.cl.controller.StoreupController.add()','{\"id\":20,\"refid\":9,\"tablename\":\"popupremind\",\"name\":\"标题9\",\"picture\":\"\",\"type\":\"61\",\"userid\":71}',18,'127.0.0.1'),
+(44,'2025-05-19 16:23:38','用户账号1','新增我的收藏','com.cl.controller.StoreupController.add()','{\"id\":21,\"refid\":10,\"tablename\":\"popupremind\",\"name\":\"标题10\",\"picture\":\"\",\"type\":\"61\",\"userid\":71}',20,'127.0.0.1'),
+(45,'2025-05-20 12:36:42','用户账号1','新增我的收藏','com.cl.controller.StoreupController.add()','{\"id\":22,\"refid\":2,\"tablename\":\"jiankangshipu\",\"name\":\"食谱名称2\",\"picture\":\"file/jiankangshipuFengmian2.jpg\",\"type\":\"21\",\"userid\":71}',26,'127.0.0.1'),
+(46,'2025-05-20 12:36:43','用户账号1','修改健康食谱','com.cl.controller.JiankangshipuController.update()','{\"id\":2,\"shipumingcheng\":\"食谱名称2\",\"fengmian\":\"file/jiankangshipuFengmian2.jpg,file/jiankangshipuFengmian3.jpg,file/jiankangshipuFengmian4.jpg\",\"suoxushicai\":\"所需食材2\",\"shipugongxiao\":\"食谱功效2\",\"shiherenqun\":\"适合人群2\",\"zhizuofangfa\":\"制作方法2\",\"fabushijian\":\"May 8, 2025 8:32:33 PM\",\"xiangqingjianjie\":\"详情简介2\",\"thumbsupNumber\":3,\"crazilyNumber\":2,\"storeupNumber\":2,\"discussNumber\":3,\"clicktime\":\"May 8, 2025 8:32:33 PM\",\"addtime\":\"May 8, 2025 8:32:33 PM\"}',5,'127.0.0.1'),
+(47,'2025-05-20 12:36:44','用户账号1','删除我的收藏','com.cl.controller.StoreupController.delete()','[22]',7,'127.0.0.1'),
+(48,'2025-05-20 12:36:44','用户账号1','修改健康食谱','com.cl.controller.JiankangshipuController.update()','{\"id\":2,\"shipumingcheng\":\"食谱名称2\",\"fengmian\":\"file/jiankangshipuFengmian2.jpg,file/jiankangshipuFengmian3.jpg,file/jiankangshipuFengmian4.jpg\",\"suoxushicai\":\"所需食材2\",\"shipugongxiao\":\"食谱功效2\",\"shiherenqun\":\"适合人群2\",\"zhizuofangfa\":\"制作方法2\",\"fabushijian\":\"May 8, 2025 8:32:33 PM\",\"xiangqingjianjie\":\"详情简介2\",\"thumbsupNumber\":2,\"crazilyNumber\":2,\"storeupNumber\":2,\"discussNumber\":3,\"clicktime\":\"May 8, 2025 8:32:33 PM\",\"addtime\":\"May 8, 2025 8:32:33 PM\"}',2,'127.0.0.1'),
+(49,'2025-05-20 12:36:45','用户账号1','新增我的收藏','com.cl.controller.StoreupController.add()','{\"id\":23,\"refid\":2,\"tablename\":\"jiankangshipu\",\"name\":\"食谱名称2\",\"picture\":\"file/jiankangshipuFengmian2.jpg\",\"type\":\"22\",\"userid\":71}',10,'127.0.0.1'),
+(50,'2025-05-20 12:36:46','用户账号1','修改健康食谱','com.cl.controller.JiankangshipuController.update()','{\"id\":2,\"shipumingcheng\":\"食谱名称2\",\"fengmian\":\"file/jiankangshipuFengmian2.jpg,file/jiankangshipuFengmian3.jpg,file/jiankangshipuFengmian4.jpg\",\"suoxushicai\":\"所需食材2\",\"shipugongxiao\":\"食谱功效2\",\"shiherenqun\":\"适合人群2\",\"zhizuofangfa\":\"制作方法2\",\"fabushijian\":\"May 8, 2025 8:32:33 PM\",\"xiangqingjianjie\":\"详情简介2\",\"thumbsupNumber\":2,\"crazilyNumber\":3,\"storeupNumber\":2,\"discussNumber\":3,\"clicktime\":\"May 8, 2025 8:32:33 PM\",\"addtime\":\"May 8, 2025 8:32:33 PM\"}',4,'127.0.0.1'),
+(51,'2025-05-20 12:36:46','用户账号1','删除我的收藏','com.cl.controller.StoreupController.delete()','[23]',11,'127.0.0.1'),
+(52,'2025-05-20 12:36:47','用户账号1','修改健康食谱','com.cl.controller.JiankangshipuController.update()','{\"id\":2,\"shipumingcheng\":\"食谱名称2\",\"fengmian\":\"file/jiankangshipuFengmian2.jpg,file/jiankangshipuFengmian3.jpg,file/jiankangshipuFengmian4.jpg\",\"suoxushicai\":\"所需食材2\",\"shipugongxiao\":\"食谱功效2\",\"shiherenqun\":\"适合人群2\",\"zhizuofangfa\":\"制作方法2\",\"fabushijian\":\"May 8, 2025 8:32:33 PM\",\"xiangqingjianjie\":\"详情简介2\",\"thumbsupNumber\":2,\"crazilyNumber\":2,\"storeupNumber\":2,\"discussNumber\":3,\"clicktime\":\"May 8, 2025 8:32:33 PM\",\"addtime\":\"May 8, 2025 8:32:33 PM\"}',2,'127.0.0.1'),
+(53,'2025-05-20 12:39:24','用户账号1','新增消息表','com.cl.controller.ChatMessageController.add()','{\"id\":13,\"uid\":71,\"fid\":191,\"content\":\"1111\",\"format\":1}',27,'127.0.0.1'),
+(54,'2025-05-20 12:39:28','用户账号1','新增消息表','com.cl.controller.ChatMessageController.add()','{\"id\":14,\"uid\":71,\"fid\":191,\"content\":\"file/1747715968018.jpg\",\"format\":2}',13,'127.0.0.1'),
+(55,'2025-05-20 12:40:01','用户账号1','新增客服聊天','com.cl.controller.ChatController.add()','{\"id\":14,\"ask\":\"112155\",\"isreply\":1,\"userid\":71}',107,'127.0.0.1'),
+(56,'2025-05-20 12:40:01','用户账号1','新增客服聊天','com.cl.controller.ChatController.add()','{\"id\":15,\"ask\":\"\",\"userid\":71}',16,'127.0.0.1'),
+(57,'2025-05-20 12:42:06','用户账号1','新增饮食记录','com.cl.controller.YinshijiluController.save()','{\"id\":11,\"jiluriqi\":\"May 20, 2025 12:00:00 AM\",\"yinshixiangqing\":\"\\u003cp\\u003e粥、馒头.\\u003c/p\\u003e\",\"yonghuzhanghao\":\"用户账号1\",\"yonghuxingming\":\"用户姓名1\"}',21,'127.0.0.1'),
+(58,'2025-05-20 12:45:36','admin','新增客服聊天','com.cl.controller.ChatController.save()','{\"id\":16,\"adminid\":1,\"reply\":\"444\",\"isreply\":0,\"userid\":71}',96,'::1'),
+(59,'2025-05-20 12:46:36','专家账号1','新增消息表','com.cl.controller.ChatMessageController.add()','{\"id\":15,\"uid\":191,\"fid\":71,\"content\":\"55\",\"format\":1}',18,'::1'),
+(60,'2025-05-20 16:06:33','用户账号1','新增消息表','com.cl.controller.ChatMessageController.add()','{\"id\":16,\"uid\":71,\"fid\":191,\"content\":\"1\",\"format\":1}',49,'127.0.0.1'),
+(61,'2025-05-20 16:06:45','用户账号1','新增客服聊天','com.cl.controller.ChatController.add()','{\"id\":17,\"ask\":\"1\",\"isreply\":1,\"userid\":71}',73,'127.0.0.1'),
+(62,'2025-05-28 19:34:09','用户账号1','新增健康食谱评论表','com.cl.controller.DiscussjiankangshipuController.add()','{\"id\":2,\"refid\":1,\"userid\":71,\"avatarurl\":\"file/yonghuTouxiang1.jpg\",\"nickname\":\"用户账号1\",\"content\":\"\\u003cp\\u003e666\\u003c/p\\u003e\"}',102,'127.0.0.1'),
+(63,'2025-05-28 19:34:09','用户账号1','修改健康食谱','com.cl.controller.JiankangshipuController.update()','{\"id\":1,\"shipumingcheng\":\"减肥餐\",\"fengmian\":\"file/jiankangshipuFengmian1.jpg,file/jiankangshipuFengmian2.jpg,file/jiankangshipuFengmian3.jpg\",\"suoxushicai\":\"肉、蛋、奶\",\"shipugongxiao\":\"食谱功效1\",\"shiherenqun\":\"肥胖人群\",\"zhizuofangfa\":\"制作方法1\",\"fabushijian\":\"May 8, 2025 8:32:33 PM\",\"xiangqingjianjie\":\"\\u003cp\\u003e详情简介1\\u003c/p\\u003e\",\"thumbsupNumber\":1,\"crazilyNumber\":1,\"storeupNumber\":1,\"discussNumber\":2,\"clicktime\":\"May 8, 2025 8:32:33 PM\",\"addtime\":\"May 8, 2025 8:32:33 PM\"}',2,'127.0.0.1'),
+(64,'2025-05-28 19:34:41','用户账号2','新增健康食谱评论表','com.cl.controller.DiscussjiankangshipuController.add()','{\"id\":3,\"refid\":1,\"userid\":72,\"avatarurl\":\"file/yonghuTouxiang2.jpg\",\"nickname\":\"用户账号2\",\"content\":\"\\u003cp\\u003e5\\u003c/p\\u003e\"}',11,'127.0.0.1'),
+(65,'2025-05-28 19:34:41','用户账号2','修改健康食谱','com.cl.controller.JiankangshipuController.update()','{\"id\":1,\"shipumingcheng\":\"减肥餐\",\"fengmian\":\"file/jiankangshipuFengmian1.jpg,file/jiankangshipuFengmian2.jpg,file/jiankangshipuFengmian3.jpg\",\"suoxushicai\":\"肉、蛋、奶\",\"shipugongxiao\":\"食谱功效1\",\"shiherenqun\":\"肥胖人群\",\"zhizuofangfa\":\"制作方法1\",\"fabushijian\":\"May 8, 2025 8:32:33 PM\",\"xiangqingjianjie\":\"\\u003cp\\u003e详情简介1\\u003c/p\\u003e\",\"thumbsupNumber\":1,\"crazilyNumber\":1,\"storeupNumber\":1,\"discussNumber\":3,\"clicktime\":\"May 8, 2025 8:32:33 PM\",\"addtime\":\"May 8, 2025 8:32:33 PM\"}',1,'127.0.0.1'),
+(66,'2025-05-28 20:33:52','用户账号1','新增我的收藏','com.cl.controller.StoreupController.add()','{\"id\":24,\"refid\":1,\"tablename\":\"jiankangzhishi\",\"name\":\"标题1\",\"picture\":\"file/jiankangzhishiTupian1.jpg\",\"type\":\"1\",\"userid\":71}',32,'127.0.0.1'),
+(67,'2025-05-28 20:33:52','用户账号1','修改健康知识','com.cl.controller.JiankangzhishiController.update()','{\"id\":1,\"biaoti\":\"标题1\",\"jianjie\":\"简介1\",\"tupian\":\"file/jiankangzhishiTupian1.jpg,file/jiankangzhishiTupian2.jpg,file/jiankangzhishiTupian3.jpg\",\"neirong\":\"内容1\",\"fabushijian\":\"May 8, 2025 12:00:00 AM\",\"discussNumber\":1,\"storeupNumber\":2,\"addtime\":\"May 8, 2025 8:32:33 PM\"}',2,'127.0.0.1'),
+(68,'2025-05-28 20:33:58','用户账号1','新增我的收藏','com.cl.controller.StoreupController.add()','{\"id\":25,\"refid\":6,\"tablename\":\"jiankangzhishi\",\"name\":\"标题6\",\"picture\":\"file/jiankangzhishiTupian6.jpg\",\"type\":\"1\",\"userid\":71}',18,'127.0.0.1'),
+(69,'2025-05-28 20:33:58','用户账号1','修改健康知识','com.cl.controller.JiankangzhishiController.update()','{\"id\":6,\"biaoti\":\"标题6\",\"jianjie\":\"简介6\",\"tupian\":\"file/jiankangzhishiTupian6.jpg,file/jiankangzhishiTupian7.jpg,file/jiankangzhishiTupian8.jpg\",\"neirong\":\"内容6\",\"fabushijian\":\"May 8, 2025 12:00:00 AM\",\"discussNumber\":6,\"storeupNumber\":7,\"addtime\":\"May 8, 2025 8:32:33 PM\"}',1,'127.0.0.1'),
+(70,'2025-05-28 21:13:48','用户账号1','新增健康食谱评论表','com.cl.controller.DiscussjiankangshipuController.add()','{\"id\":4,\"refid\":1,\"userid\":71,\"avatarurl\":\"file/yonghuTouxiang1.jpg\",\"nickname\":\"用户账号1\",\"content\":\"\\u003cp\\u003e这个食谱的碳水含量适合糖尿病患者吗？\\u003c/p\\u003e\"}',93,'127.0.0.1'),
+(71,'2025-05-28 21:13:49','用户账号1','修改健康食谱','com.cl.controller.JiankangshipuController.update()','{\"id\":1,\"shipumingcheng\":\"减肥餐\",\"fengmian\":\"file/jiankangshipuFengmian1.jpg,file/jiankangshipuFengmian2.jpg,file/jiankangshipuFengmian3.jpg\",\"suoxushicai\":\"肉、蛋、奶\",\"shipugongxiao\":\"食谱功效1\",\"shiherenqun\":\"肥胖人群\",\"zhizuofangfa\":\"制作方法1\",\"fabushijian\":\"May 8, 2025 8:32:33 PM\",\"xiangqingjianjie\":\"\\u003cp\\u003e详情简介1\\u003c/p\\u003e\",\"thumbsupNumber\":1,\"crazilyNumber\":1,\"storeupNumber\":1,\"discussNumber\":4,\"clicktime\":\"May 8, 2025 8:32:33 PM\",\"addtime\":\"May 8, 2025 8:32:33 PM\"}',1,'127.0.0.1'),
+(72,'2025-06-02 13:11:34','用户账号1','新增我的收藏','com.cl.controller.StoreupController.add()','{\"id\":26,\"refid\":11,\"tablename\":\"popupremind\",\"name\":\"糖尿病用药\",\"picture\":\"\",\"type\":\"61\",\"userid\":71}',16,'127.0.0.1'),
+(73,'2025-06-08 00:23:45','用户账号1','新增我的收藏','com.cl.controller.StoreupController.add()','{\"id\":27,\"refid\":2,\"tablename\":\"jiankangshipu\",\"name\":\"食谱名称2\",\"picture\":\"file/jiankangshipuFengmian2.jpg\",\"type\":\"21\",\"userid\":71}',87,'172.24.135.109'),
+(74,'2025-06-08 00:23:45','用户账号1','修改健康食谱','com.cl.controller.JiankangshipuController.update()','{\"id\":2,\"shipumingcheng\":\"食谱名称2\",\"fengmian\":\"file/jiankangshipuFengmian2.jpg,file/jiankangshipuFengmian3.jpg,file/jiankangshipuFengmian4.jpg\",\"suoxushicai\":\"所需食材2\",\"shipugongxiao\":\"食谱功效2\",\"shiherenqun\":\"适合人群2\",\"zhizuofangfa\":\"制作方法2\",\"fabushijian\":\"May 8, 2025 8:32:33 PM\",\"xiangqingjianjie\":\"详情简介2\",\"thumbsupNumber\":3,\"crazilyNumber\":2,\"storeupNumber\":2,\"discussNumber\":3,\"clicktime\":\"May 8, 2025 8:32:33 PM\",\"addtime\":\"May 8, 2025 8:32:33 PM\"}',3,'172.24.135.109'),
+(75,'2025-06-08 00:23:57','用户账号1','新增健康食谱评论表','com.cl.controller.DiscussjiankangshipuController.add()','{\"id\":5,\"refid\":2,\"userid\":71,\"avatarurl\":\"file/yonghuTouxiang1.jpg\",\"nickname\":\"用户账号1\",\"content\":\"\\u003cp\\u003e123\\u003c/p\\u003e\"}',69,'172.24.135.109'),
+(76,'2025-06-08 00:23:57','用户账号1','修改健康食谱','com.cl.controller.JiankangshipuController.update()','{\"id\":2,\"shipumingcheng\":\"食谱名称2\",\"fengmian\":\"file/jiankangshipuFengmian2.jpg,file/jiankangshipuFengmian3.jpg,file/jiankangshipuFengmian4.jpg\",\"suoxushicai\":\"所需食材2\",\"shipugongxiao\":\"食谱功效2\",\"shiherenqun\":\"适合人群2\",\"zhizuofangfa\":\"制作方法2\",\"fabushijian\":\"May 8, 2025 8:32:33 PM\",\"xiangqingjianjie\":\"详情简介2\",\"thumbsupNumber\":3,\"crazilyNumber\":2,\"storeupNumber\":2,\"discussNumber\":4,\"clicktime\":\"May 8, 2025 8:32:33 PM\",\"addtime\":\"May 8, 2025 8:32:33 PM\"}',1,'172.24.135.109'),
+(77,'2025-06-08 00:24:51','用户账号1','新增健康知识评论表','com.cl.controller.DiscussjiankangzhishiController.add()','{\"id\":1,\"refid\":10,\"userid\":71,\"avatarurl\":\"file/yonghuTouxiang1.jpg\",\"nickname\":\"用户账号1\",\"content\":\"\\u003cp\\u003e123\\u003c/p\\u003e\"}',79,'172.24.135.109'),
+(79,'2025-06-08 00:27:19','用户账号1','新增消息表','com.cl.controller.ChatMessageController.add()','{\"id\":17,\"uid\":71,\"fid\":191,\"content\":\"感冒了\",\"format\":1}',76,'172.24.135.109'),
+(80,'2025-06-08 00:28:01','用户账号1','新增客服聊天','com.cl.controller.ChatController.add()','{\"id\":18,\"ask\":\"2025\",\"isreply\":1,\"userid\":71}',97,'172.24.135.109'),
+(81,'2025-06-08 00:28:30','用户账号1','修改用户','com.cl.controller.YonghuController.update()','{\"id\":71,\"yonghuzhanghao\":\"用户账号1\",\"yonghumima\":\"e10adc3949ba59abbe56e057f20f883e\",\"yonghuxingming\":\"用户姓名1\",\"touxiang\":\"file/yonghuTouxiang1.jpg\",\"xingbie\":\"Woman\",\"shoujihaoma\":\"19819881111\",\"addtime\":\"May 8, 2025 8:32:33 PM\"}',2,'172.24.135.109'),
+(82,'2025-06-08 00:28:42','用户账号1','修改用户','com.cl.controller.YonghuController.update()','{\"id\":71,\"yonghuzhanghao\":\"用户账号1\",\"yonghumima\":\"e10adc3949ba59abbe56e057f20f883e\",\"yonghuxingming\":\"用户姓名1\",\"touxiang\":\"file/yonghuTouxiang1.jpg\",\"xingbie\":\"Woman\",\"shoujihaoma\":\"19819881123\",\"addtime\":\"May 8, 2025 8:32:33 PM\"}',2,'172.24.135.109'),
+(83,'2025-06-08 00:30:27','用户账号1','新增健康档案','com.cl.controller.JiankangdanganController.save()','{\"id\":11,\"yonghuzhanghao\":\"用户账号1\",\"yonghuxingming\":\"用户姓名1\",\"xingbie\":\"Woman\",\"touxiang\":\"file/yonghuTouxiang1.jpg\",\"chushengriqi\":\"Jun 8, 2025 12:00:00 AM\",\"nianling\":\"21\",\"shengao\":\"167\",\"tizhong\":\"60\",\"xuexing\":\"A\",\"jiwangbingshi\":\"-----\",\"jiazubingshi\":\"------\",\"guominyaowu\":\"----\"}',21,'172.24.135.109'),
+(84,'2025-06-08 00:32:49','用户账号1','修改饮食记录','com.cl.controller.YinshijiluController.update()','{\"id\":1,\"jiluriqi\":\"May 15, 2025 12:00:00 AM\",\"yinshixiangqing\":\"\\u003cp\\u003e米饭 100g\\u003c/p\\u003e\",\"yonghuzhanghao\":\"用户账号1\",\"yonghuxingming\":\"用户姓名1\",\"addtime\":\"May 8, 2025 8:32:33 PM\"}',2,'172.24.135.109'),
+(85,'2025-06-08 00:33:30','用户账号1','修改吃药提醒','com.cl.controller.PopupRemindController.update()','{\"id\":11,\"userid\":71,\"title\":\"糖尿病用药\",\"type\":\"私人\",\"brief\":\"\",\"content\":\"\",\"remindTime\":\"Jun 8, 2025 12:33:20 AM\",\"addtime\":\"May 18, 2025 3:07:06 AM\"}',2,'172.24.135.109'),
+(86,'2025-06-08 00:44:13','admin','修改新闻资讯','com.cl.controller.NewsController.update()','{\"id\":10,\"title\":\"愿你有明天可奔赴，有过往可回头\",\"introduction\":\"此去经年，用一张离家的车票，换一段有故事可说的人生。\\n大概就是那时候怀揣着梦想，背上了行囊，一腔热血决定远行的你。独自拎着一只行李箱，背着双肩包在深夜抵达一个陌生的城市，站在人潮涌动的车站出口，望着宽敞公路上车水马龙的喧嚣，城市里亮如白昼的繁华。\",\"picture\":\"file/newsPicture10.jpg,file/1749314649917.jpg\",\"content\":\"\\u003cp\\u003e这世界上的人们都活的匆匆忙忙，每个人看起来都很焦虑，每个人都有自己的苦楚，却往往找不到人可以诉说。也许你的倾诉，对别人来说是一种打扰，而且别人没经历过你的经历，所以无法体会你的心情。我们总是在心情不好的时候拿着手机，翻翻通讯录，然后再默默放下手机，压住心中那股想要找人说说话的想法。\\u003c/p\\u003e\\u003cp\\u003e等到低落的情绪慢慢有些好转，才开始明白，人这一生，无论是什么样的路，都是自己的选择，冲动也好，深思熟虑也罢，自己选的路，不管多难，都要自己走下去。心中的感受，不管是复杂还是简单，都只能自己来懂，别人帮不了你，也安慰不了你，顶多给你一些无济于事的劝告，最后还得靠自己想开。你选的幸福，你自己享受;你选的眼泪，你自己来流，生活就是如此，自己的路，自己走;自己的心，自己懂。\\u003c/p\\u003e\",\"addtime\":\"May 8, 2025 8:32:33 PM\"}',1,'::1'),
+(87,'2025-06-08 00:44:42','admin','修改网站介绍','com.cl.controller.SystemintroController.update()','{\"id\":1,\"title\":\"网站介绍\",\"subtitle\":\"WEBSITE INTRODUCTION\",\"content\":\"\\u003cp\\u003e山川湖海，风雨雷电，花鸟虫鱼，这些都是大自然的奇妙造物，也是我们生命中最美好的遇见。在万籁俱寂的雪夜里，深邃\\u0026gt;的星空映入眼帘，让我感受到生命的无限广阔与深沉；在烈日炎炎的夏日里，那炽热的阳光照射在身上，让我感受到生命的多彩与活力。\\u003c/p\\u003e\",\"picture1\":\"file/systemintroPicture1.jpg\",\"picture2\":\"file/systemintroPicture2.jpg\",\"picture3\":\"file/systemintroPicture3.jpg\",\"addtime\":\"May 8, 2025 8:32:33 PM\"}',2,'::1'),
+(88,'2025-06-08 00:45:16','admin','删除操作日志','com.cl.controller.SyslogController.delete()','[78]',114,'::1'),
+(89,'2025-06-08 00:46:35','admin','新增客服聊天','com.cl.controller.ChatController.save()','{\"id\":19,\"adminid\":1,\"reply\":\"hello\",\"isreply\":0,\"userid\":71}',113,'::1'),
+(90,'2025-06-08 00:48:00','admin','新增消息表','com.cl.controller.ChatMessageController.add()','{\"id\":18,\"uid\":1,\"fid\":191,\"content\":\"0：47\",\"format\":1}',78,'::1'),
+(91,'2025-06-08 00:48:00','admin','新增好友表','com.cl.controller.ChatFriendController.add()','{\"id\":15,\"uid\":1,\"fid\":191,\"name\":\"专家账号1\",\"picture\":\"file/jiankangzhuanjiaTouxiang1.jpg\",\"tablename\":\"jiankangzhuanjia\",\"type\":2}',79,'::1'),
+(92,'2025-06-08 00:48:00','admin','新增好友表','com.cl.controller.ChatFriendController.add()','{\"id\":16,\"uid\":191,\"fid\":1,\"name\":\"admin\",\"tablename\":\"users\",\"type\":2}',7,'::1'),
+(93,'2025-06-08 00:48:26','admin','修改健康知识','com.cl.controller.JiankangzhishiController.update()','{\"id\":10,\"biaoti\":\"标题10\",\"jianjie\":\"简介10\",\"tupian\":\"file/jiankangzhishiTupian10.jpg,file/jiankangzhishiTupian11.jpg,file/jiankangzhishiTupian12.jpg\",\"neirong\":\"\\u003cp\\u003e内容10\\u003c/p\\u003e\",\"fabushijian\":\"May 8, 2025 12:00:00 AM\",\"discussNumber\":11,\"storeupNumber\":10,\"addtime\":\"May 8, 2025 8:32:33 PM\"}',1,'::1'),
+(94,'2025-06-08 00:49:35','admin','新增健康食谱','com.cl.controller.JiankangshipuController.save()','{\"id\":11,\"shipumingcheng\":\"配方100\",\"fengmian\":\"file/1749314943021.png\",\"suoxushicai\":\"123\",\"shipugongxiao\":\"ghy\",\"shiherenqun\":\"儿童\",\"zhizuofangfa\":\"-----------------\",\"fabushijian\":\"Jun 8, 2025 12:49:24 AM\",\"xiangqingjianjie\":\"\\u003cp\\u003e-----------------\\u003c/p\\u003e\"}',25,'::1'),
+(95,'2025-06-08 00:49:49','admin','修改健康食谱','com.cl.controller.JiankangshipuController.update()','{\"id\":11,\"shipumingcheng\":\"配方100\",\"fengmian\":\"file/1749314943021.png\",\"suoxushicai\":\"123\",\"shipugongxiao\":\"ghy\",\"shiherenqun\":\"儿童\",\"zhizuofangfa\":\"-----------------\",\"fabushijian\":\"Jun 8, 2025 12:49:24 AM\",\"xiangqingjianjie\":\"\\u003cp\\u003e-----------------\\u003c/p\\u003e\",\"addtime\":\"Jun 8, 2025 12:49:34 AM\"}',1,'::1'),
+(96,'2025-06-08 00:49:52','admin','删除健康食谱','com.cl.controller.JiankangshipuController.delete()','[11]',12,'::1'),
+(97,'2025-06-08 00:50:24','admin','删除健康档案','com.cl.controller.JiankangdanganController.delete()','[11]',29,'::1'),
+(98,'2025-06-08 00:51:44','admin','修改用药管理','com.cl.controller.YongyaoguanliController.update()','{\"id\":10,\"yaopinmingcheng\":\"药品名称10\",\"guige\":\"规格10\",\"fuyongjiliang\":\"1天2次\",\"meirifuyongcishu\":\"每日服用次数10\",\"qishifuyongshijian\":\"May 8, 2025 12:00:00 AM\",\"yujijieshushijian\":\"May 8, 2025 12:00:00 AM\",\"yonghuzhanghao\":\"用户账号10\",\"yonghuxingming\":\"用户姓名10\",\"addtime\":\"May 8, 2025 8:32:33 PM\"}',1,'::1'),
+(99,'2025-06-08 00:52:15','admin','删除健康目标','com.cl.controller.JiankangmubiaoController.delete()','[10]',5,'::1'),
+(100,'2025-06-08 00:55:52','专家账号1','修改健康专家','com.cl.controller.JiankangzhuanjiaController.update()','{\"id\":191,\"zhuanjiazhanghao\":\"专家账号1\",\"zhuanjiamima\":\"e10adc3949ba59abbe56e057f20f883e\",\"zhuanjiaxingming\":\"专家姓名1\",\"touxiang\":\"file/jiankangzhuanjiaTouxiang1.jpg\",\"xingbie\":\"男\",\"nianling\":\"年龄1\",\"shanzhanglingyu\":\"擅长领域1\",\"gerenjianjie\":\"毕业于世界医科大学，研究生学历，博士学位，现为世界医院副院长、减肥科荣誉主任，获得世界发明专利100余项，\",\"addtime\":\"May 8, 2025 8:32:33 PM\"}',2,'::1'),
+(101,'2025-06-08 00:56:16','专家账号1','新增消息表','com.cl.controller.ChatMessageController.add()','{\"id\":19,\"uid\":191,\"fid\":71,\"content\":\"吃药\",\"format\":1}',75,'::1'),
+(102,'2025-06-08 00:56:32','专家账号1','新增消息表','com.cl.controller.ChatMessageController.add()','{\"id\":20,\"uid\":191,\"fid\":1,\"content\":\"收到\",\"format\":1}',70,'::1');
 
 /*Table structure for table `systemintro` */
 
@@ -584,7 +748,7 @@ CREATE TABLE `systemintro` (
 /*Data for the table `systemintro` */
 
 insert  into `systemintro`(`id`,`addtime`,`title`,`subtitle`,`content`,`picture1`,`picture2`,`picture3`) values 
-(1,'2025-05-08 20:32:33','网站介绍','WEBSITE INTRODUCTION','山川湖海，风雨雷电，花鸟虫鱼，这些都是大自然的奇妙造物，也是我们生命中最美好的遇见。在万籁俱寂的雪夜里，深邃>的星空映入眼帘，让我感受到生命的无限广阔与深沉；在烈日炎炎的夏日里，那炽热的阳光照射在身上，让我感受到生命的多彩与活力。','file/systemintroPicture1.jpg','file/systemintroPicture2.jpg','file/systemintroPicture3.jpg');
+(1,'2025-05-08 20:32:33','网站介绍','WEBSITE INTRODUCTION','<p>山川湖海，风雨雷电，花鸟虫鱼，这些都是大自然的奇妙造物，也是我们生命中最美好的遇见。在万籁俱寂的雪夜里，深邃&gt;的星空映入眼帘，让我感受到生命的无限广阔与深沉；在烈日炎炎的夏日里，那炽热的阳光照射在身上，让我感受到生命的多彩与活力。</p>','file/systemintroPicture1.jpg','file/systemintroPicture2.jpg','file/systemintroPicture3.jpg');
 
 /*Table structure for table `token` */
 
@@ -600,15 +764,17 @@ CREATE TABLE `token` (
   `addtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '新增时间',
   `expiratedtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '过期时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='token表';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='token表';
 
 /*Data for the table `token` */
 
 insert  into `token`(`id`,`userid`,`username`,`tablename`,`role`,`token`,`addtime`,`expiratedtime`) values 
-(1,71,'用户账号1','yonghu','用户','5vjs0ip985svd9zzmbloq6unmssidw8t','2025-05-08 20:34:48','2025-05-15 19:30:04'),
+(1,71,'用户账号1','yonghu','用户','oognpjh7yg0asptil7ett0rn5pzy9deo','2025-05-08 20:34:48','2025-06-09 15:13:12'),
 (2,74,'用户账号4','yonghu','用户','2pscjms8bb39t8xe1fzasesvh8o4fvt6','2025-05-15 17:49:28','2025-05-15 18:49:29'),
 (3,73,'用户账号3','yonghu','用户','a5m3zi9bjymbu4fc582x9r8h4fdvgy2m','2025-05-15 19:05:31','2025-05-15 20:05:32'),
-(4,72,'用户账号2','yonghu','用户','7etspzmnikcbx8dqnp59wbz4luaps3ef','2025-05-15 19:05:54','2025-05-15 20:05:55');
+(4,72,'用户账号2','yonghu','用户','dq8hl8nx2obeerda77sv9psvwqwmjo76','2025-05-15 19:05:54','2025-05-28 20:34:30'),
+(5,191,'专家账号1','jiankangzhuanjia','健康专家','5qrcet39nhfnm16l6zqfrkcbawgfeyki','2025-05-17 14:21:24','2025-06-08 01:54:38'),
+(6,1,'admin','users','管理员','eg6th3s9pgrlnhnujrdjhweocihrlzdn','2025-05-17 14:23:14','2025-06-09 15:12:51');
 
 /*Table structure for table `users` */
 
@@ -640,12 +806,12 @@ CREATE TABLE `yinshijilu` (
   `yonghuzhanghao` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '用户账号',
   `yonghuxingming` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '用户姓名',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='饮食记录';
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='饮食记录';
 
 /*Data for the table `yinshijilu` */
 
 insert  into `yinshijilu`(`id`,`addtime`,`jiluriqi`,`yinshixiangqing`,`yonghuzhanghao`,`yonghuxingming`) values 
-(1,'2025-05-08 20:32:33','2025-05-08','饮食详情1','用户账号1','用户姓名1'),
+(1,'2025-05-08 20:32:33','2025-05-15','<p>米饭 100g</p>','用户账号1','用户姓名1'),
 (2,'2025-05-08 20:32:33','2025-05-08','饮食详情2','用户账号2','用户姓名2'),
 (3,'2025-05-08 20:32:33','2025-05-08','饮食详情3','用户账号3','用户姓名3'),
 (4,'2025-05-08 20:32:33','2025-05-08','饮食详情4','用户账号4','用户姓名4'),
@@ -654,7 +820,8 @@ insert  into `yinshijilu`(`id`,`addtime`,`jiluriqi`,`yinshixiangqing`,`yonghuzha
 (7,'2025-05-08 20:32:33','2025-05-08','饮食详情7','用户账号7','用户姓名7'),
 (8,'2025-05-08 20:32:33','2025-05-08','饮食详情8','用户账号8','用户姓名8'),
 (9,'2025-05-08 20:32:33','2025-05-08','饮食详情9','用户账号9','用户姓名9'),
-(10,'2025-05-08 20:32:33','2025-05-08','饮食详情10','用户账号10','用户姓名10');
+(10,'2025-05-08 20:32:33','2025-05-08','饮食详情10','用户账号10','用户姓名10'),
+(11,'2025-05-20 12:42:06','2025-05-20','<p>粥、馒头.</p>','用户账号1','用户姓名1');
 
 /*Table structure for table `yonghu` */
 
@@ -676,14 +843,14 @@ CREATE TABLE `yonghu` (
 /*Data for the table `yonghu` */
 
 insert  into `yonghu`(`id`,`addtime`,`yonghuzhanghao`,`yonghumima`,`yonghuxingming`,`touxiang`,`xingbie`,`shoujihaoma`) values 
-(71,'2025-05-08 20:32:33','用户账号1','e10adc3949ba59abbe56e057f20f883e','用户姓名1','file/yonghuTouxiang1.jpg','男','19819881111'),
+(71,'2025-05-08 20:32:33','用户账号1','e10adc3949ba59abbe56e057f20f883e','用户姓名1','file/yonghuTouxiang1.jpg','Woman','19819881123'),
 (72,'2025-05-08 20:32:33','用户账号2','e10adc3949ba59abbe56e057f20f883e','用户姓名2','file/yonghuTouxiang2.jpg','男','19819881112'),
 (73,'2025-05-08 20:32:33','用户账号3','e10adc3949ba59abbe56e057f20f883e','用户姓名3','file/yonghuTouxiang3.jpg','男','19819881113'),
 (74,'2025-05-08 20:32:33','用户账号4','e10adc3949ba59abbe56e057f20f883e','用户姓名4','file/yonghuTouxiang4.jpg','男','19819881114'),
-(75,'2025-05-08 20:32:33','用户账号5','e10adc3949ba59abbe56e057f20f883e','用户姓名5','file/yonghuTouxiang5.jpg','男','19819881115'),
+(75,'2025-05-08 20:32:33','用户账号5','e10adc3949ba59abbe56e057f20f883e','用户姓名5','file/yonghuTouxiang5.jpg','Woman','19819881115'),
 (76,'2025-05-08 20:32:33','用户账号6','e10adc3949ba59abbe56e057f20f883e','用户姓名6','file/yonghuTouxiang6.jpg','男','19819881116'),
 (77,'2025-05-08 20:32:33','用户账号7','e10adc3949ba59abbe56e057f20f883e','用户姓名7','file/yonghuTouxiang7.jpg','男','19819881117'),
-(78,'2025-05-08 20:32:33','用户账号8','e10adc3949ba59abbe56e057f20f883e','用户姓名8','file/yonghuTouxiang8.jpg','男','19819881118'),
+(78,'2025-05-08 20:32:33','用户账号8','e10adc3949ba59abbe56e057f20f883e','用户姓名8','file/yonghuTouxiang8.jpg','Woman','19819881118'),
 (79,'2025-05-08 20:32:33','用户账号9','e10adc3949ba59abbe56e057f20f883e','用户姓名9','file/yonghuTouxiang9.jpg','男','19819881119'),
 (80,'2025-05-08 20:32:33','用户账号10','e10adc3949ba59abbe56e057f20f883e','用户姓名10','file/yonghuTouxiang10.jpg','男','198198811110');
 
@@ -717,7 +884,7 @@ insert  into `yongyaoguanli`(`id`,`addtime`,`yaopinmingcheng`,`guige`,`fuyongjil
 (7,'2025-05-08 20:32:33','药品名称7','规格7','服用剂量7','每日服用次数7','2025-05-08','2025-05-08','用户账号7','用户姓名7'),
 (8,'2025-05-08 20:32:33','药品名称8','规格8','服用剂量8','每日服用次数8','2025-05-08','2025-05-08','用户账号8','用户姓名8'),
 (9,'2025-05-08 20:32:33','药品名称9','规格9','服用剂量9','每日服用次数9','2025-05-08','2025-05-08','用户账号9','用户姓名9'),
-(10,'2025-05-08 20:32:33','药品名称10','规格10','服用剂量10','每日服用次数10','2025-05-08','2025-05-08','用户账号10','用户姓名10');
+(10,'2025-05-08 20:32:33','药品名称10','规格10','1天2次','每日服用次数10','2025-05-08','2025-05-08','用户账号10','用户姓名10');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
